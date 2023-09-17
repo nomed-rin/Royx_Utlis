@@ -1,4 +1,4 @@
-	local Junk_Meme = {
+getgenv().Junk_Meme = {
 		"หมาสี่แม่มึง.com",
 		"เช่ายศ Instant Whitelist เพื่อลุงรอยไปเปย์ สาวแว่น",
 		"Royx เป็นสายตำรวจ",
