@@ -1,0 +1,9 @@
+local tbls = setmetatable({}, {
+	__index = function(self , name)
+		if name == "getgenv" then
+			return
+		end
+		return getgenv()[name]
+	end
+})   
+setfenv(1, tbls)
