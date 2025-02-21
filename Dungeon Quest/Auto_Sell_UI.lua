@@ -1,3 +1,11 @@
+--discord.gg/boronide, code generated using luamin.js™
+
+
+
+--discord.gg/boronide, code generated using luamin.js™
+
+
+
 
 
 
@@ -184,144 +192,51 @@ LeftGroupBox:AddDropdown('Universe_Rarity', {
 	Multi = true,
 	Text = 'Global Rarity want to sell',
 })
-for i, v in pairs(tbl_Dungeon) do
-	Count = Count + 1
-
-	if Count > math.floor(Length / 2) then
-		WeaponLeftGroupBox:AddLabel(i, true)
-		WeaponLeftGroupBox:AddLabel("", true)
-		WeaponLeftGroupBox:AddDropdown(i .. "_Weapon", {
-			Values = DataItem["Weapon"][i],
-			Default = 0,
-			Multi = true,
-			Text = 'Item want to sell',
-		})
-
-		WeaponLeftGroupBox:AddDropdown(i .. "_WeaponRarity", {
-			Values = rarity,
-			Default = 0,
-			Multi = true,
-			Text = 'Item want to sell',
-		})
-	else
-		WeaponRightGroupBox:AddLabel(i, true)
-		WeaponRightGroupBox:AddLabel("", true)
-		WeaponRightGroupBox:AddDropdown(i .. "_Weapon", {
-			Values = DataItem["Weapon"][i],
-			Default = 0,
-			Multi = true,
-			Text = 'Item want to sell',
-		})
-		WeaponRightGroupBox:AddDropdown(i .. "_WeaponRarity", {
-			Values = rarity,
-			Default = 0,
-			Multi = true,
-			Text = 'Rarity want to sell',
-		})
+local function UI_Create(arg1, arg2,Left,Right)
+	Count = 0
+	for i, v in pairs(tbl_Dungeon) do
+		Count = Count + 1
+		if Count > math.floor(Length / 2) then
+			Left:AddLabel(i, true)
+			Left:AddLabel("", true)
+			Left:AddDropdown(i .. "_" .. arg1, {
+				Values = DataItem["Chest"][i],
+				Default = 0,
+				Multi = true,
+				Text = 'Item want to sell',
+			})
+			if arg2 then
+				Left:AddDropdown(i .. "_".. arg2, {
+					Values = rarity,
+					Default = 0,
+					Multi = true,
+					Text = 'Rarity want to sell',
+				})
+			end
+		else
+			Right:AddLabel(i, true)
+			Right:AddLabel("", true)
+			Right:AddDropdown(i .. "_" .. arg1, {
+				Values = DataItem["Chest"][i],
+				Default = 0,
+				Multi = true,
+				Text = 'Item want to sell',
+			})
+			if arg2 then
+				Right:AddDropdown(i .. "_".. arg2, {
+					Values = rarity,
+					Default = 0,
+					Multi = true,
+					Text = 'Rarity want to sell',
+				})
+			end
+		end
 	end
 end
-
-Count = 0
-for i, v in pairs(tbl_Dungeon) do
-	Count = Count + 1
-
-	if Count > math.floor(Length / 2) then
-		HelmetLeftGroupBox:AddLabel(i, true)
-		HelmetLeftGroupBox:AddLabel("", true)
-		HelmetLeftGroupBox:AddDropdown(i .. "_Helmet", {
-			Values = DataItem["Helmet"][i],
-			Default = 0,
-			Multi = true,
-			Text = 'Item want to sell',
-		})
-
-		HelmetLeftGroupBox:AddDropdown(i .. "_HelmetRarity", {
-			Values = rarity,
-			Default = 0,
-			Multi = true,
-			Text = 'Rarity want to sell',
-		})
-	else
-		HelmetRightGroupBox:AddLabel(i, true)
-		HelmetRightGroupBox:AddLabel("", true)
-		HelmetRightGroupBox:AddDropdown(i .. "_Helmet", {
-			Values = DataItem["Helmet"][i],
-			Default = 0,
-			Multi = true,
-			Text = 'Item want to sell',
-		})
-		HelmetRightGroupBox:AddDropdown(i .. "_HelmetRarity", {
-			Values = rarity,
-			Default = 0,
-			Multi = true,
-			Text = 'Rarity want to sell',
-		})
-	end
-end
-
-Count = 0
-for i, v in pairs(tbl_Dungeon) do
-	Count = Count + 1
-
-	if Count > math.floor(Length / 2) then
-		ChestLeftGroupBox:AddLabel(i, true)
-		ChestLeftGroupBox:AddLabel("", true)
-		ChestLeftGroupBox:AddDropdown(i .. "_Chest", {
-			Values = DataItem["Chest"][i],
-			Default = 0,
-			Multi = true,
-			Text = 'Item want to sell',
-		})
-
-		ChestLeftGroupBox:AddDropdown(i .. "_ChestRarity", {
-			Values = rarity,
-			Default = 0,
-			Multi = true,
-			Text = 'Rarity want to sell',
-		})
-	else
-		ChestRightGroupBox:AddLabel(i, true)
-		ChestRightGroupBox:AddLabel("", true)
-		ChestRightGroupBox:AddDropdown(i .. "_Chest", {
-			Values = DataItem["Chest"][i],
-			Default = 0,
-			Multi = true,
-			Text = 'Item want to sell',
-		})
-		ChestRightGroupBox:AddDropdown(i .. "_ChestRarity", {
-			Values = rarity,
-			Default = 0,
-			Multi = true,
-			Text = 'Rarity want to sell',
-		})
-	end
-end
-
-Count = 0
-for i, v in pairs(tbl_Dungeon) do
-	Count = Count + 1
-
-	if Count > math.floor(Length / 2) then
-		AbilityLeftGroupBox:AddLabel(i, true)
-		AbilityLeftGroupBox:AddLabel("", true)
-		AbilityLeftGroupBox:AddDropdown(i .. "_Ability", {
-			Values = DataItem["Ability"][i],
-			Default = 0,
-			Multi = true,
-			Text = 'Item want to sell',
-		})
-	else
-		AbilityRightGroupBox:AddLabel(i, true)
-		AbilityRightGroupBox:AddLabel("", true)
-		AbilityRightGroupBox:AddDropdown(i .. "_Ability", {
-			Values = DataItem["Ability"][i],
-			Default = 0,
-			Multi = true,
-			Text = 'Item want to sell',
-		})
-
-	end
-end
+UI_Create("Weapon","WeaponRarity",WeaponLeftGroupBox,WeaponRightGroupBox)
+UI_Create("Helmet","HelmetRarity",HelmetLeftGroupBox,HelmetRightGroupBox)
+UI_Create("Chest","ChestRarity",ChestLeftGroupBox,ChestRightGroupBox)
+UI_Create("Ability",nil,AbilityLeftGroupBox,AbilityRightGroupBox)
 
 -- UI Settings
 local MenuGroup = Tabs['UI Settings']:AddLeftGroupbox('Menu')
