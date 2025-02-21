@@ -1,3 +1,9 @@
+--discord.gg/boronide, code generated using luamin.js™
+
+
+
+--discord.gg/boronide, code generated using luamin.js™
+
 
 
 
@@ -194,7 +200,7 @@ local function UI_Create(arg1, arg2,Left,Right)
 			Left:AddLabel(i, true)
 			Left:AddLabel("", true)
 			Left:AddDropdown(i .. "_" .. arg1, {
-				Values = DataItem["Chest"][i],
+				Values = DataItem[arg1][i],
 				Default = 0,
 				Multi = true,
 				Text = 'Item want to sell',
@@ -211,7 +217,7 @@ local function UI_Create(arg1, arg2,Left,Right)
 			Right:AddLabel(i, true)
 			Right:AddLabel("", true)
 			Right:AddDropdown(i .. "_" .. arg1, {
-				Values = DataItem["Chest"][i],
+				Values = DataItem[arg1][i],
 				Default = 0,
 				Multi = true,
 				Text = 'Item want to sell',
