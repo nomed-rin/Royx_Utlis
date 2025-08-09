@@ -34,7 +34,7 @@ local Error = clonef(error);
 local getnamecallmethod = clonef(getnamecallmethod);
 local blocked = options.BlockedURLs;
 local enabled = true;
-local reqfunc = (syn or http).request;
+local reqfunc = (syn or http).request or request;
 local libtype = syn and "syn" or "http";
 local hooked = {};
 local proxied = {};
@@ -42,6 +42,7 @@ local methods = {
     HttpGet = not syn,
     HttpGetAsync = not syn,
     GetObjects = true,
+    HttpPost = not syn,
     HttpPostAsync = not syn
 }
 
